@@ -1,0 +1,29 @@
+{
+  "name": "anim-viewer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+
+    "dev": "vite",
+    "io": "node io_server.js",
+    "all": "concurrently --kill-others \"npm run dev\" \"npm run io\""
+  },
+  "devDependencies": {
+    "@types/three": "^0.184.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.10"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "golden-layout": "^2.6.0",
+    "lucide": "^1.16.0",
+    "micromatch": "^4.0.8",
+    "open": "^11.0.0",
+    "three": "^0.184.0"
+  }
+}

@@ -1,0 +1,142 @@
+.al-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #111;
+    color: #ccc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.al-search-wrapper {
+    padding: 12px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.al-search-input {
+    flex: 1;
+    min-width: 0; /* Important: prevents input from overflowing flex parent */
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.al-count-label {
+    font-size: 11px;
+    color: #666;
+    font-family: 'JetBrains Mono', 'Monaco', 'Consolas', monospace;
+    white-space: nowrap;
+    background: #222;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #333;
+}
+
+.al-search-input:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+}
+
+.al-list-container {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.al-spacer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.al-item {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+    background: #111;
+    transition: background 0.1s;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.al-item:hover {
+    background: #222;
+}
+
+.al-item-name {
+    flex: 1;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.al-item-buttons {
+    display: flex;
+    gap: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+
+.al-item:hover .al-item-buttons {
+    opacity: 1;
+}
+
+.al-item-button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.al-item-button:hover {
+    background: #444;
+    color: #fff;
+}
+
+.al-item-active {
+    background: #2a2a2a !important;
+    border-left: 3px solid #ffd700;
+    color: #ffd700;
+}
+
+/* Custom Scrollbar */
+.al-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.al-list-container::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.al-list-container::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.al-list-container::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}

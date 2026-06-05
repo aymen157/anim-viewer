@@ -1,0 +1,209 @@
+.retarget-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #111;
+    color: #ccc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.retarget-panels-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.retarget-panel {
+    flex: 1;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.retarget-panel-left {
+    border-right: 1px solid #222;
+    background-color: #0b0b0b;
+}
+
+.retarget-panel-right {
+    background-color: #121212;
+}
+
+.retarget-image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.retarget-renderer-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.retarget-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.retarget-point {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00ff66;
+    border: 2px solid #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 0 6px rgba(0, 255, 102, 0.7);
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    z-index: 10;
+}
+
+.retarget-point:hover {
+    transform: translate(-50%, -50%) scale(1.35);
+    z-index: 50;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.retarget-point.active {
+    background: #ffcc00;
+    box-shadow: 0 0 12px #ffcc00, 0 0 0 3px rgba(255, 208, 0, 0.3);
+    border-color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 60;
+}
+
+.retarget-point.mapped {
+    background: #00bfff;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.8);
+    border-color: #ffffff;
+}
+
+.retarget-point.hover-linked {
+    background: #ff00ff;
+    box-shadow: 0 0 12px #ff00ff;
+    border-color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 55;
+}
+
+.retarget-point-label {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.9);
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    border: 1px solid #333;
+    pointer-events: none;
+}
+
+.retarget-point:hover .retarget-point-label,
+.retarget-point.active .retarget-point-label {
+    opacity: 1;
+}
+
+/* Toolbar */
+.retarget-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #222;
+    padding: 10px 16px;
+    z-index: 100;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    font-size: 12px;
+}
+
+.retarget-toolbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.retarget-symmetry-label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #ccc;
+    user-select: none;
+}
+
+.retarget-symmetry-label input[type="checkbox"] {
+    margin: 0 6px 0 0;
+    cursor: pointer;
+}
+
+.retarget-info-text {
+    font-weight: 500;
+}
+
+.retarget-info-highlight {
+    color: #ffd700;
+    font-weight: 700;
+}
+
+.retarget-btn {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.15s, border-color 0.15s;
+    font-weight: 500;
+}
+
+.retarget-btn:hover {
+    background: #3a3a3a;
+    border-color: #666;
+    color: #fff;
+}
+
+.retarget-btn-primary {
+    background: #ffd700;
+    color: #111;
+    border-color: #ffd700;
+    font-weight: 600;
+}
+
+.retarget-btn-primary:hover {
+    background: #ffe240;
+    border-color: #ffe240;
+    color: #000;
+}

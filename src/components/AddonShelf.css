@@ -1,0 +1,456 @@
+.addon-shelf-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #111;
+    color: #ccc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.addon-shelf-header {
+    padding: 16px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.addon-shelf-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addon-shelf-header h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #fff;
+}
+
+.addon-shelf-count-badge {
+    font-size: 10px;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.addon-shelf-add-btn {
+    background: #ffd700;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.addon-shelf-add-btn:hover {
+    background: #ffea70;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.addon-shelf-add-btn:active {
+    transform: scale(0.95);
+}
+
+.addon-shelf-add-btn svg {
+    stroke-width: 3px;
+}
+
+/* List container and scrollbar */
+.addon-shelf-list-container {
+    flex: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+    transition: filter 0.3s;
+}
+
+.addon-shelf-list-container.form-open {
+    filter: blur(1px) brightness(0.5);
+    pointer-events: none;
+}
+
+.addon-shelf-list-wrapper {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Custom Scrollbar */
+.addon-shelf-list-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.addon-shelf-list-container::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.addon-shelf-list-container::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+.addon-shelf-list-container::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* Rows styling */
+.addon-shelf-row {
+    display: flex;
+    align-items: center;
+    background: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 10px 12px;
+    gap: 12px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.addon-shelf-row:hover {
+    border-color: #ffd700;
+    background-color: #222;
+}
+
+.addon-shelf-row-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #2a2a2a;
+    border-radius: 4px;
+    color: #ffd700;
+    flex-shrink: 0;
+    border: 1px solid #333;
+}
+
+.addon-shelf-row-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.addon-shelf-row-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.addon-shelf-row-title {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.addon-shelf-row-badge {
+    font-size: 9px;
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.addon-shelf-row-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.addon-shelf-row-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.addon-shelf-row-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.addon-shelf-row-btn.delete:hover {
+    background-color: #4b1a1a;
+    color: #ff5555;
+}
+
+/* Empty State */
+.addon-shelf-empty-state {
+    border: 1px dashed #333;
+    border-radius: 8px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    margin-top: 12px;
+}
+
+.addon-shelf-empty-state:hover {
+    border-color: #ffd700;
+    background-color: rgba(255,215,0,0.02);
+}
+
+.addon-shelf-empty-icon {
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.addon-shelf-empty-state:hover .addon-shelf-empty-icon {
+    color: #ffd700;
+}
+
+.addon-shelf-empty-title {
+    font-size: 13px;
+    color: #eee;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.addon-shelf-empty-state p {
+    margin: 0;
+    font-size: 11px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Form Panel */
+.addon-shelf-form-panel {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #181818;
+    border-top: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.addon-shelf-form-panel.visible {
+    transform: translateY(0);
+}
+
+.addon-shelf-form-panel h4 {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    border-left: 3px solid #ffd700;
+    padding-left: 8px;
+}
+
+.addon-shelf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.addon-shelf-field label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.addon-shelf-input {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.addon-shelf-input:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+}
+
+.addon-shelf-textarea {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+.addon-shelf-textarea:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
+}
+
+.addon-shelf-svg-textarea {
+    font-family: 'JetBrains Mono', 'Monaco', monospace;
+    font-size: 11px;
+    color: #a78bfa;
+}
+
+.addon-shelf-script-textarea {
+    font-family: 'JetBrains Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 12px;
+    color: #c3e88d;
+    background: #141414;
+    border: 1px solid #252525;
+}
+
+/* Preset Icon Selector Grid */
+.addon-shelf-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.addon-shelf-preset-btn {
+    height: 32px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.addon-shelf-preset-btn:hover {
+    border-color: #666;
+    color: #fff;
+    background: #2a2a2a;
+}
+
+.addon-shelf-preset-btn.active {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.08);
+    color: #ffd700;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+/* Documentation panel */
+.addon-shelf-docs {
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+}
+
+.addon-shelf-docs h5 {
+    margin: 0 0 6px 0;
+    font-size: 10px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.05em;
+}
+
+.addon-shelf-docs ul {
+    margin: 0;
+    padding-left: 14px;
+    list-style-type: disc;
+}
+
+.addon-shelf-docs li {
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.addon-shelf-docs code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: #2a2a2a;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #ffd700;
+}
+
+/* Form actions styling */
+.addon-shelf-form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.addon-shelf-btn-save {
+    flex: 1;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.addon-shelf-btn-save:hover {
+    background: #ffea70;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.addon-shelf-btn-cancel {
+    flex: 1;
+    background: #2a2a2a;
+    color: #ccc;
+    border: 1px solid #3a3a3a;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.addon-shelf-btn-cancel:hover {
+    background: #333;
+    color: #fff;
+}
